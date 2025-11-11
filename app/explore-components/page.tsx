@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/components/Button";
 import React, { useState } from "react";
 
 export default function HomePage() {
@@ -18,7 +19,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50 font-sans p-10 space-y-10">
       {/* Header */}
       <header className="bg-blue-600 text-white py-4 text-center rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold">All Components in One Page</h1>
+        <h1 className="text-2xl font-bold">All Components</h1>
       </header>
 
       {/* Search Bar */}
@@ -76,19 +77,22 @@ export default function HomePage() {
       {/* Buttons */}
       <section>
         <h2 className="text-xl font-semibold mb-3">🎯 Buttons</h2>
-        <div className="flex gap-4">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-semibold">
-            Primary
-          </button>
-          <button className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition font-semibold">
-            Secondary
-          </button>
-          <button
-            onClick={handleSubmit}
-            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition font-semibold"
+        <div className="flex flex-col max-w-sm gap-2">
+          <Button
+            type="primary"
+            size="medium"
+            onClick={() => alert("Primary button clicked")}
           >
-            Submit
-          </button>
+            Primary
+          </Button>
+
+          <Button
+            type="secondary"
+            size="medium"
+            onClick={() => alert("Secondary button clicked")}
+          >
+            Secondary
+          </Button>
         </div>
       </section>
     </div>
