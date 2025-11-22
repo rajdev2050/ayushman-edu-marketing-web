@@ -8,6 +8,7 @@ type ButtonProps = {
   disabled?: boolean;
   onClick?: () => void;
   children: React.ReactNode;
+  className?: string;
 };
 
 export default function Button(props: ButtonProps) {
@@ -22,7 +23,10 @@ export default function Button(props: ButtonProps) {
     }
   };
   return (
-    <button className={getButtonStyle()} onClick={props.onClick}>
+    <button
+      className={`${getButtonStyle()} ${props.className}`}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );

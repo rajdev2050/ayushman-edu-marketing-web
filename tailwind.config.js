@@ -7,6 +7,9 @@ const config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ["var(--font-montserrat)", "sans-serif"],
+            },
             colors: {
                 primary: "#1d4ed8",
                 "primary-foreground": "#f8fafc",
