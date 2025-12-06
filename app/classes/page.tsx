@@ -4,19 +4,8 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeftIcon } from "lucide-react";
 
-const classes = [
-  { name: "Nursery", displayName: "Nursery" },
-  { name: "1st", displayName: "1st Standard" },
-  { name: "2nd", displayName: "2nd Standard" },
-  { name: "3rd", displayName: "3rd Standard" },
-  { name: "4th", displayName: "4th Standard" },
-  { name: "5th", displayName: "5th Standard" },
-  { name: "6th", displayName: "6th Standard" },
-  { name: "7th", displayName: "7th Standard" },
-  { name: "8th", displayName: "8th Standard" },
-  { name: "9th", displayName: "9th Standard" },
-  { name: "10th", displayName: "10th Standard" },
-];
+import classesData from "@/data/classes.json";
+import ClassItem from "@/components/ClassItem";
 
 export default function ClassesPage() {
   const router = useRouter();
@@ -46,28 +35,11 @@ export default function ClassesPage() {
 
         {/* Classes Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {classes.map((classItem) => (
-            <button
-              key={classItem.name}
-              onClick={() => router.push(`/class/${classItem.name.toLowerCase()}`)}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-8 text-center hover:scale-105 hover:bg-blue-50 border-2 border-transparent hover:border-blue-500 group"
-            >
-              <div className="text-4xl font-bold text-gray-800 group-hover:text-blue-600 mb-2">
-                {classItem.name}
-              </div>
-              <div className="text-sm text-gray-600 group-hover:text-blue-700">
-                {classItem.displayName}
-              </div>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="text-blue-600 text-sm font-semibold">
-                  View Details →
-                </span>
-              </div>
-            </button>
+          {classesData.map((classItem) => (
+            <ClassItem classItem={classItem} key={classItem.name} />
           ))}
         </div>
       </div>
     </div>
   );
 }
-
