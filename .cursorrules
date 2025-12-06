@@ -58,6 +58,22 @@ export default function ComponentName(props: ComponentProps) {
 - One component per file
 - Use descriptive file names matching component names
 
+### Static Data Management
+
+- **Always** store static data in JSON format under the `data/` directory
+- Use descriptive file names: `data/classes.json`, `data/facilities.json`, etc.
+- Import JSON data using: `import data from "@/data/filename.json"`
+- Keep data files organized by domain/feature (e.g., `classes.json`, `events.json`, `facilities.json`)
+- Define TypeScript types for JSON data structures in `type/` directory
+- Example structure:
+
+  ```tsx
+  import classesData from "@/data/classes.json";
+  import type { ClassItemType } from "@/type/ClassItemType";
+
+  const classes: ClassItemType[] = classesData;
+  ```
+
 ### Next.js App Router
 
 - Use App Router conventions (not Pages Router)
