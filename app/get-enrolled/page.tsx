@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "lucide-react";
 import Button from "@/components/Button";
 
 const classes = [
@@ -104,9 +106,20 @@ export default function GetEnrolledPage() {
     }
   };
 
+  const router = useRouter();
+
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-3xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Back Button */}
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
+        >
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back
+        </button>
+
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Get Enrolled
@@ -284,9 +297,7 @@ export default function GetEnrolledPage() {
                 onChange={handleChange}
                 placeholder="10-digit phone number"
                 className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.contactNumber
-                    ? "border-red-500"
-                    : "border-gray-300"
+                  errors.contactNumber ? "border-red-500" : "border-gray-300"
                 }`}
                 aria-invalid={!!errors.contactNumber}
                 aria-describedby={
@@ -332,4 +343,3 @@ export default function GetEnrolledPage() {
     </div>
   );
 }
-

@@ -134,12 +134,12 @@ export default function EventDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Back Button */}
         <Link
           href="/event"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-6 transition"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
         >
           <ArrowLeftIcon className="w-4 h-4" />
           Back to Events

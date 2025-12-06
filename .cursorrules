@@ -1,0 +1,197 @@
+# Cursor Rules for Ayushman Educational Academy Marketing Web
+
+## Project Overview
+
+This is a Next.js 16 marketing website for Ayushman Educational Academy built with:
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- Lucide React (icons)
+
+## Code Style & Conventions
+
+### TypeScript
+
+- Use strict TypeScript with proper type definitions
+- Define explicit types for all props, state, and function parameters
+- Use type aliases for reusable types (e.g., `type ButtonProps = {...}`)
+- Prefer `type` over `interface` for component props
+- Always use proper typing - avoid `any` unless absolutely necessary
+
+### React Components
+
+- Use functional components with hooks
+- Use default exports for components
+- Add `"use client"` directive at the top of client components
+- Use descriptive component names (PascalCase)
+- Keep components focused and single-purpose
+- Extract reusable logic into custom hooks when appropriate
+
+### Component Structure
+
+```tsx
+"use client";
+
+import React, { useState } from "react";
+import ComponentName from "@/components/ComponentName";
+
+type ComponentProps = {
+  prop1: string;
+  prop2?: number;
+};
+
+export default function ComponentName(props: ComponentProps) {
+  // Component logic
+  return (
+    // JSX
+  );
+}
+```
+
+### File Organization
+
+- Pages: `app/**/page.tsx`
+- Components: `components/ComponentName.tsx`
+- Use path aliases: `@/components/...`, `@/app/...`
+- One component per file
+- Use descriptive file names matching component names
+
+### Next.js App Router
+
+- Use App Router conventions (not Pages Router)
+- Use `useRouter()` from `next/navigation` for navigation
+- Use `usePathname()` from `next/navigation` for pathname detection
+- Use `Link` from `next/link` for client-side navigation
+- Server components by default, add `"use client"` only when needed
+
+### Styling with Tailwind CSS
+
+- Use Tailwind utility classes exclusively
+- Follow responsive design patterns: `sm:`, `md:`, `lg:` breakpoints
+- Use semantic color classes: `bg-blue-600`, `text-gray-700`, etc.
+- Apply hover states: `hover:bg-blue-700`, `hover:scale-105`
+- Use transitions: `transition`, `transition-all duration-300`
+- Group related styles logically
+- Use spacing utilities: `px-4`, `py-2`, `gap-6`, `mb-4`
+- Use flexbox/grid utilities: `flex`, `items-center`, `justify-between`
+
+### Component Props Pattern
+
+- Define props as a type with descriptive names
+- Use optional props with `?` when appropriate
+- Destructure props in function parameters or use `props.` notation
+- Include `className?: string` for style overrides
+- Use `React.ReactNode` for children
+
+### State Management
+
+- Use `useState` for local component state
+- Keep state as close to where it's used as possible
+- Use descriptive state variable names (e.g., `isDialogOpen`, `isFeesDialogOpen`)
+
+### Navigation & Routing
+
+- Use `router.push("/path")` for programmatic navigation
+- Use `Link` component for declarative navigation
+- Check active routes with `usePathname()` and `pathname.startsWith(href)`
+
+### Icons
+
+- Import icons from `lucide-react`
+- Use descriptive icon names: `ArrowRightIcon`, `MenuIcon`, `XIcon`
+- Apply consistent sizing: `w-4 h-4`, `w-6 h-6`
+
+### Code Formatting
+
+- Use 2 spaces for indentation
+- Use semicolons
+- Use single quotes for strings (or double quotes - be consistent)
+- Add blank lines between logical sections
+- Use trailing commas in objects/arrays
+
+### Comments
+
+- Use section comments with emojis for visual organization: `{/* 🔹 Section Name */}`
+- Add comments for complex logic
+- Keep comments concise and meaningful
+
+### Accessibility
+
+- Use semantic HTML elements
+- Add proper ARIA labels when needed
+- Ensure keyboard navigation works
+- Maintain proper heading hierarchy
+
+### Performance
+
+- Use Next.js Image component for images (when applicable)
+- Lazy load components when appropriate
+- Optimize bundle size by importing only needed icons
+
+### Error Handling
+
+- Use ErrorBoundary for error catching
+- Handle loading states appropriately
+- Provide user-friendly error messages
+
+## Common Patterns
+
+### Dialog/Modal Pattern
+
+```tsx
+{
+  isDialogOpen && (
+    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+      <div className="bg-white rounded-2xl shadow-xl p-8">
+        {/* Content */}
+        <button onClick={() => setIsDialogOpen(false)}>Close</button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Button Component Usage
+
+```tsx
+<Button
+  type="primary"
+  size="medium"
+  className="flex items-center gap-2"
+  onClick={() => router.push("/path")}
+>
+  Button Text <ArrowRightIcon className="w-4 h-4" />
+</Button>
+```
+
+### Section Structure
+
+```tsx
+<section
+  id="section-id"
+  className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8"
+>
+  <div className="max-w-4xl mx-auto">{/* Content */}</div>
+</section>
+```
+
+## Best Practices
+
+1. **Consistency**: Follow existing patterns in the codebase
+2. **Responsive Design**: Always consider mobile, tablet, and desktop views
+3. **Type Safety**: Leverage TypeScript for type safety
+4. **Component Reusability**: Extract common patterns into reusable components
+5. **Clean Code**: Write readable, maintainable code
+6. **Performance**: Optimize for fast page loads and smooth interactions
+7. **User Experience**: Prioritize intuitive navigation and clear UI
+
+## What to Avoid
+
+- Don't use `any` types
+- Don't mix Pages Router and App Router patterns
+- Don't use inline styles (use Tailwind classes)
+- Don't create overly complex components (split into smaller ones)
+- Don't forget to add `"use client"` for client components
+- Don't use default exports for utilities (only for components)

@@ -76,14 +76,19 @@ function App() {
       </section>
 
       {/* 🔹 About Section */}
-      <section id="about" className="py-16 px-6 text-center">
-        <h2 className="text-3xl font-bold mb-3 text-gray-900">
-          Welcome to Ayushman Educational Academy
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Our academy is dedicated to shaping young minds through excellence in
-          education, discipline, and innovation.
-        </p>
+      <section
+        id="about"
+        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center"
+      >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
+            Welcome to Ayushman Educational Academy
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Our academy is dedicated to shaping young minds through excellence
+            in education, discipline, and innovation.
+          </p>
+        </div>
       </section>
 
       <hr className="text-black/10" />
@@ -91,38 +96,45 @@ function App() {
       {/* 🔹 Courses/Classes */}
       <section
         id="courses"
-        className="py-16 px-6 text-center items-center justify-center flex flex-col"
+        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center"
       >
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">
-          Explore Classes
-        </h2>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          We offer a classes from 1st to 10th standard with a focus on academic
-          and extracurricular development.
-        </p>
-        <Button
-          type="primary"
-          size="medium"
-          className="mt-4 flex items-center justify-center gap-2"
-          onClick={() => router.push("/classes")}
-        >
-          Find a Class <ArrowRightIcon className="w-4 h-4" />
-        </Button>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Explore Classes
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6">
+            We offer a classes from 1st to 10th standard with a focus on
+            academic and extracurricular development.
+          </p>
+          <Button
+            type="primary"
+            size="medium"
+            className="flex items-center justify-center gap-2 mx-auto"
+            onClick={() => router.push("/classes")}
+          >
+            Find a Class <ArrowRightIcon className="w-4 h-4" />
+          </Button>
+        </div>
       </section>
 
       <hr className="text-black/10" />
 
       {/* 🔹 Thought */}
-      <section id="thought" className="py-16 px-6 text-center">
+      <section
+        id="thought"
+        className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 text-center"
+      >
         <h2 className="text-3xl font-bold text-gray-900 mb-4">
           Thought of the Day
         </h2>
 
-        <blockquote className="text-2xl italic text-gray-700">
-          “Education is the most powerful weapon which you can use to change the
-          world.”
-        </blockquote>
-        <p className="mt-2 text-gray-500 text-lg">— Nelson Mandela</p>
+        <div className="max-w-4xl mx-auto">
+          <blockquote className="text-2xl sm:text-3xl italic text-gray-700 mb-4">
+            &ldquo;Education is the most powerful weapon which you can use to
+            change the world.&rdquo;
+          </blockquote>
+          <p className="text-gray-500 text-lg">— Nelson Mandela</p>
+        </div>
       </section>
 
       {/* 🔹 Footer */}

@@ -98,23 +98,25 @@ export default function Header() {
 
       {/* MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-white px-6 pb-4 shadow-md">
-          <nav className="flex flex-col gap-4 font-medium">
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
+          <nav className="flex flex-col px-6 py-4 gap-3 font-medium">
             {menuItems.map((item) => {
               const active = isActive(item.href);
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`hover:text-blue-600 transition relative py-1 ${
-                    active ? "text-blue-600 font-semibold" : "text-gray-700"
+                  className={`hover:text-blue-600 transition relative py-2.5 px-2 rounded-lg ${
+                    active
+                      ? "text-blue-600 font-semibold bg-blue-50"
+                      : "text-gray-700 hover:bg-gray-50"
                   }`}
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
                   {active && (
                     <span className="absolute left-0 top-0 bottom-0 w-1 bg-blue-600 rounded-r"></span>
                   )}
+                  {item.label}
                 </Link>
               );
             })}
@@ -123,7 +125,7 @@ export default function Header() {
                 router.push("/get-enrolled");
                 setOpen(false);
               }}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition shadow-sm mt-2"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-semibold hover:bg-blue-700 transition shadow-sm mt-2 w-full text-center"
             >
               Get Enrolled
             </button>

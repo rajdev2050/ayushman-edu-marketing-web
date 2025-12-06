@@ -11,7 +11,7 @@ export default function AdmissionPage() {
         </p>
       </div>
 
-      <div className="max-w-5xl mx-auto p-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* 🔹 Admission Process */}
         <section className="bg-white shadow-md p-6 rounded-xl mb-10">
           <h2 className="text-2xl font-semibold mb-4">Admission Process</h2>
