@@ -11,9 +11,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-gray-50 py-12 px-6">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Contact Us
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600">
             Have questions? We&apos;d love to hear from you. Fill out the form
             below and we&apos;ll get back to you as soon as possible.
@@ -32,11 +30,11 @@ export default function ContactPage() {
             <p className="flex items-center gap-2">
               <span aria-hidden="true">📞</span>
               <a
-                href="tel:+919876543210"
+                href="tel:+919098293521"
                 className="hover:text-blue-600 underline"
-                aria-label="Call us at +91 98765 43210"
+                aria-label="Call us at +91 90982 93521"
               >
-                +91 98765 43210
+                +91 90982 93521
               </a>
             </p>
             <p className="flex items-center gap-2">
@@ -51,7 +49,7 @@ export default function ContactPage() {
             </p>
             <p className="flex items-center gap-2">
               <span aria-hidden="true">📍</span>
-              <span>Dewas, Madhya Pradesh</span>
+              <span>Semli Bari, Madhya Pradesh</span>
             </p>
           </div>
         </div>
@@ -59,12 +57,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-

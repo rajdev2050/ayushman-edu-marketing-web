@@ -26,7 +26,7 @@ function App() {
       primaryText: "Quality Education for All",
       secondaryText: "Shaping young minds through innovation and dedication",
       ctaText: "View Courses",
-      ctaAction: () => router.push("/about"),
+      ctaAction: () => router.push("/classes"),
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ function App() {
       primaryText: "Empowering Students",
       secondaryText: "Creating opportunities for academic excellence",
       ctaText: "Admissions Open",
-      ctaAction: () => router.push("/admission"),
+      ctaAction: () => router.push("/get-enrolled"),
     },
     {
       id: 4,
@@ -42,7 +42,7 @@ function App() {
       primaryText: "Our Happy Students",
       secondaryText: "Building a community of learners and achievers",
       ctaText: "Get Started",
-      ctaAction: () => router.push("/admission"),
+      ctaAction: () => router.push("/get-enrolled"),
     },
     {
       id: 5,
@@ -50,7 +50,7 @@ function App() {
       primaryText: "Excellence in Every Step",
       secondaryText: "Nurturing talent and potential in every child",
       ctaText: "Contact Us",
-      ctaAction: () => setIsDialogOpen(true),
+      ctaAction: () => router.push("/contact"),
     },
     {
       id: 6,
@@ -144,11 +144,13 @@ function App() {
             <p className="text-gray-700 text-sm mb-1">
               Ayushman Educational Academy
             </p>
-            <p className="text-gray-600 text-sm">📞 +91 98765 43210</p>
+            <p className="text-gray-600 text-sm">📞 +91 9098293521</p>
             <p className="text-gray-600 text-sm">
               📧 contact@ayushmanacademy.com
             </p>
-            <p className="text-gray-600 text-sm">📍 Dewas, Madhya Pradesh</p>
+            <p className="text-gray-600 text-sm">
+              📍 Semli Bari, Madhya Pradesh
+            </p>
 
             <button
               onClick={() => setIsDialogOpen(false)}

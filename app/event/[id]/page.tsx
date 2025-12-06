@@ -2,51 +2,191 @@
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { ArrowLeftIcon } from "lucide-react";
 
-const eventData = {
+const eventData: Record<
+  number,
+  {
+    title: string;
+    img: string;
+    description: string;
+    date: string;
+    location?: string;
+  }
+> = {
   1: {
     title: "Annual Day",
-    img: "/events/event1.jpg",
-    description: "Annual Day Celebration",
+    img: "/events/sample.png",
+    description:
+      "Our Annual Day celebration is a grand event that showcases the talents and achievements of our students. The event features cultural performances, award ceremonies, and special presentations by students from all classes. It's a day filled with joy, creativity, and celebration of our academic year.",
+    date: "March 15, 2024",
+    location: "School Auditorium",
   },
   2: {
     title: "Sports Meet",
-    img: "/events/event2.jpg",
-    description: "Sports Meet Event",
+    img: "/events/sample.png",
+    description:
+      "The Annual Sports Meet brings together students, teachers, and parents for a day of athletic excellence. Students participate in various track and field events, team sports, and fun activities. This event promotes physical fitness, teamwork, and healthy competition among students.",
+    date: "February 20, 2024",
+    location: "School Ground",
   },
   3: {
     title: "Science Fair",
-    img: "/events/event3.jpg",
-    description: "Science Fair Exhibition",
+    img: "/events/sample.png",
+    description:
+      "Our Science Fair provides a platform for students to showcase their scientific knowledge and innovative projects. Students present experiments, models, and research projects, demonstrating their understanding of scientific concepts and their ability to apply them creatively.",
+    date: "January 25, 2024",
+    location: "Science Laboratory",
   },
   4: {
     title: "Cultural Fest",
-    img: "/events/event4.jpg",
-    description: "Cultural Fest Celebration",
+    img: "/events/sample.png",
+    description:
+      "The Cultural Fest is a vibrant celebration of our diverse cultural heritage. Students perform traditional dances, music, drama, and other cultural activities. This event helps students appreciate different cultures and develop their artistic talents while fostering unity and respect.",
+    date: "December 10, 2023",
+    location: "School Auditorium",
+  },
+  5: {
+    title: "Annual Function",
+    img: "/events/sample.png",
+    description:
+      "The Annual Function is one of the most anticipated events of the year, featuring spectacular performances, speeches, and recognition of outstanding achievements. It brings together the entire school community to celebrate another successful academic year.",
+    date: "November 5, 2023",
+    location: "School Auditorium",
+  },
+  6: {
+    title: "Independence Day",
+    img: "/events/sample.png",
+    description:
+      "We celebrate Independence Day with great patriotic fervor. The event includes flag hoisting, patriotic songs, speeches, and cultural programs that instill a sense of national pride and responsibility in our students.",
+    date: "August 15, 2023",
+    location: "School Ground",
+  },
+  7: {
+    title: "Republic Day",
+    img: "/events/sample.png",
+    description:
+      "Republic Day is celebrated with enthusiasm, featuring a parade, cultural performances, and educational activities that help students understand the significance of our constitution and democratic values.",
+    date: "January 26, 2023",
+    location: "School Ground",
+  },
+  8: {
+    title: "Teachers Day",
+    img: "/events/sample.png",
+    description:
+      "Teachers Day is a special occasion where students express their gratitude to teachers through performances, cards, and speeches. It's a day to honor and appreciate the dedication and hard work of our teaching staff.",
+    date: "September 5, 2023",
+    location: "School Auditorium",
+  },
+  9: {
+    title: "Children's Day",
+    img: "/events/sample.png",
+    description:
+      "Children's Day is celebrated with fun activities, games, and special programs organized for students. Teachers put on performances, and students enjoy a day filled with entertainment and joy, celebrating the spirit of childhood.",
+    date: "November 14, 2023",
+    location: "School Campus",
+  },
+  10: {
+    title: "Science Exhibition",
+    img: "/events/sample.png",
+    description:
+      "The Science Exhibition showcases innovative projects and experiments created by students. It encourages scientific thinking, creativity, and hands-on learning, providing students with an opportunity to explore and present their scientific ideas.",
+    date: "October 20, 2023",
+    location: "Science Laboratory",
+  },
+  11: {
+    title: "Art & Craft Show",
+    img: "/events/sample.png",
+    description:
+      "The Art & Craft Show displays the artistic talents of our students through paintings, sculptures, crafts, and other creative works. This event celebrates creativity and provides a platform for students to express themselves through art.",
+    date: "September 28, 2023",
+    location: "Art Room",
   },
 };
 
 export default function EventDetailPage() {
-  const { id } = useParams();
-  const event = eventData[id as unknown as keyof typeof eventData];
+  const params = useParams();
+  const id = Number(params.id);
+  const event = eventData[id];
+
+  if (!event) {
+    return (
+      <div className="min-h-screen bg-gray-50 py-12 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-xl shadow-md p-8 text-center">
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">
+              Event Not Found
+            </h1>
+            <p className="text-gray-600 mb-6">
+              The event you're looking for doesn't exist.
+            </p>
+            <Link
+              href="/event"
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold"
+            >
+              <ArrowLeftIcon className="w-4 h-4" />
+              Back to Events
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <section className="p-6">
-      <Link href="/event" className="underline text-blue-600">
-        ← Back
-      </Link>
+    <div className="min-h-screen bg-gray-50 py-12 px-6">
+      <div className="max-w-4xl mx-auto">
+        {/* Back Button */}
+        <Link
+          href="/event"
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-6 transition"
+        >
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back to Events
+        </Link>
 
-      <h1 className="text-2xl font-bold mt-2">{event.title}</h1>
+        {/* Event Content */}
+        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+          {/* Event Image */}
+          <div className="relative h-64 md:h-96 overflow-hidden">
+            <Image
+              src={event.img}
+              width={1200}
+              height={600}
+              alt={event.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-      <Image
-        src={event.img}
-        width={800}
-        height={400}
-        alt={event.title}
-        className="rounded-lg my-4"
-      />
+          {/* Event Details */}
+          <div className="p-8">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              {event.title}
+            </h1>
 
-      <p className="text-gray-700">{event.description}</p>
-    </section>
+            {/* Event Meta Information */}
+            <div className="flex flex-wrap gap-6 mb-6 pb-6 border-b border-gray-200">
+              <div className="flex items-center gap-2 text-gray-600">
+                <span className="text-xl">📅</span>
+                <span className="font-medium">{event.date}</span>
+              </div>
+              {event.location && (
+                <div className="flex items-center gap-2 text-gray-600">
+                  <span className="text-xl">📍</span>
+                  <span className="font-medium">{event.location}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Event Description */}
+            <div className="prose max-w-none">
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {event.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

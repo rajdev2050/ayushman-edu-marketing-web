@@ -24,8 +24,12 @@ export default function Button(props: ButtonProps) {
   };
   return (
     <button
-      className={`${getButtonStyle()} ${props.className}`}
+      type="submit"
+      className={`${getButtonStyle()} ${props.className} ${
+        props.disabled ? "opacity-50 cursor-not-allowed hover:scale-100" : ""
+      }`}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.children}
     </button>
