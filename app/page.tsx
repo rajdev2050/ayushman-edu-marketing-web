@@ -34,7 +34,7 @@ function App() {
       primaryText: "Empowering Students",
       secondaryText: "Creating opportunities for academic excellence",
       ctaText: "Admissions Open",
-      ctaAction: () => router.push("/get-enrolled"),
+      ctaAction: () => router.push("/admission"),
     },
     {
       id: 4,

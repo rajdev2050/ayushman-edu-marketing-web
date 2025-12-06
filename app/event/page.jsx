@@ -1,6 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "lucide-react";
 import EventGallery from "@/components/EventGallery";
 
 const events = [
@@ -136,6 +138,7 @@ const events = [
 ];
 
 export default function EventPage() {
+  const router = useRouter();
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
 
@@ -151,6 +154,15 @@ export default function EventPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
       <div className="max-w-7xl mx-auto">
+        {/* Back Button */}
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-6 transition"
+        >
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back
+        </button>
+
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">

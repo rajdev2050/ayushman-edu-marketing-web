@@ -1,15 +1,24 @@
-import ContactForm from "@/components/ContactForm";
+"use client";
 
-export const metadata = {
-  title: "Contact Us",
-  description:
-    "Get in touch with Ayushman Educational Academy for admissions, classes, and general enquiries.",
-};
+import ContactForm from "@/components/ContactForm";
+import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "lucide-react";
 
 export default function ContactPage() {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6">
       <div className="max-w-3xl mx-auto">
+        {/* Back Button */}
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-6 transition"
+        >
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back
+        </button>
+
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600">

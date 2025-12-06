@@ -1,10 +1,11 @@
-export const metadata = {
-  title: "About Us",
-  description:
-    "Learn about Ayushman Educational Academy - our mission, vision, facilities, and commitment to excellence in education.",
-};
+"use client";
+
+import { useRouter } from "next/navigation";
+import { ArrowLeftIcon } from "lucide-react";
 
 export default function AboutPage() {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section - Made Smaller */}
@@ -19,6 +20,14 @@ export default function AboutPage() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Back Button */}
+        <button
+          onClick={() => router.back()}
+          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-6 transition"
+        >
+          <ArrowLeftIcon className="w-4 h-4" />
+          Back
+        </button>
         {/* Welcome Section */}
         <section className="mb-12">
           <div className="bg-white rounded-xl shadow-md p-8">
