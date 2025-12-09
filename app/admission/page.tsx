@@ -1,6 +1,81 @@
 "use client";
 
+import { useState, useMemo } from "react";
+import Button from "@/components/Button";
+
 export default function AdmissionPage() {
+  const [formData, setFormData] = useState({
+    studentName: "",
+    age: "",
+    classApplying: "",
+    fathersName: "",
+    mothersName: "",
+    mobileNumber: "",
+    address: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Real-time validation check
+  const isFormValid = useMemo(() => {
+    const studentNameValid = formData.studentName.trim().length > 0;
+    const ageValid =
+      formData.age.trim().length > 0 &&
+      parseInt(formData.age) > 0 &&
+      parseInt(formData.age) < 100;
+    const classValid = formData.classApplying.trim().length > 0;
+    const fathersNameValid = formData.fathersName.trim().length > 0;
+    const mothersNameValid = formData.mothersName.trim().length > 0;
+    const mobileValid =
+      formData.mobileNumber.trim().length > 0 &&
+      /^[0-9]{10}$/.test(formData.mobileNumber.replace(/\D/g, ""));
+    const addressValid = formData.address.trim().length > 0;
+
+    return (
+      studentNameValid &&
+      ageValid &&
+      classValid &&
+      fathersNameValid &&
+      mothersNameValid &&
+      mobileValid &&
+      addressValid
+    );
+  }, [formData]);
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isFormValid) return;
+
+    setIsSubmitting(true);
+    try {
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      // eslint-disable-next-line no-console
+      console.log("Admission form submitted:", formData);
+      setFormData({
+        studentName: "",
+        age: "",
+        classApplying: "",
+        fathersName: "",
+        mothersName: "",
+        mobileNumber: "",
+        address: "",
+      });
+    } catch {
+      // Handle error
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 🔹 Header Section */}
@@ -84,54 +159,84 @@ export default function AdmissionPage() {
         <section className="bg-white shadow-md p-6 rounded-xl mb-10">
           <h2 className="text-2xl font-semibold mb-4">Online Admission Form</h2>
 
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input
               type="text"
+              name="studentName"
+              value={formData.studentName}
+              onChange={handleChange}
               placeholder="Student Name"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <input
               type="number"
+              name="age"
+              value={formData.age}
+              onChange={handleChange}
               placeholder="Age"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <input
               type="text"
+              name="classApplying"
+              value={formData.classApplying}
+              onChange={handleChange}
               placeholder="Class Applying For"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <input
               type="text"
+              name="fathersName"
+              value={formData.fathersName}
+              onChange={handleChange}
               placeholder="Father's Name"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <input
               type="text"
+              name="mothersName"
+              value={formData.mothersName}
+              onChange={handleChange}
               placeholder="Mother's Name"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <input
-              type="number"
+              type="tel"
+              name="mobileNumber"
+              value={formData.mobileNumber}
+              onChange={handleChange}
               placeholder="Mobile Number"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
+              required
             />
 
             <textarea
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
               placeholder="Address"
               className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 md:col-span-2"
+              required
             ></textarea>
 
-            <button
-              type="submit"
-              className="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 md:col-span-2"
+            <Button
+              type="primary"
+              size="medium"
+              disabled={isSubmitting || !isFormValid}
+              className="md:col-span-2"
             >
-              Submit Application
-            </button>
+              {isSubmitting ? "Submitting..." : "Submit Application"}
+            </Button>
           </form>
         </section>
       </div>

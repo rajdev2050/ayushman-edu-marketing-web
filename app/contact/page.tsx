@@ -1,31 +1,17 @@
 "use client";
 
 import ContactForm from "@/components/ContactForm";
-import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from "lucide-react";
+import HeroSection from "@/components/HeroSection";
 
 export default function ContactPage() {
-  const router = useRouter();
-
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
-        >
-          <ArrowLeftIcon className="w-4 h-4" />
-          Back
-        </button>
-
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-600">
-            Have questions? We&apos;d love to hear from you. Fill out the form
-            below and we&apos;ll get back to you as soon as possible.
-          </p>
-        </div>
+        <HeroSection
+          title="Contact Us"
+          description="Have questions? We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible."
+          className="mb-10"
+        />
 
         <div className="bg-white rounded-xl shadow-md p-8 mb-8">
           <ContactForm />

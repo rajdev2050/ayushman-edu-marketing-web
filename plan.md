@@ -45,3 +45,5 @@ Highlight top students - with higher ranks, good in sports and activity.
 Create a page with route /staff
 
 Highlight all staff with their persona,
+
+# Use Input component on all pages

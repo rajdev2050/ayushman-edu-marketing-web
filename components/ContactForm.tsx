@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Button from "./Button";
 
 type ContactFormProps = {
@@ -42,6 +42,20 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+
+  // Real-time validation check
+  const isFormValid = useMemo(() => {
+    const nameValid = formData.name.trim().length > 0;
+    const emailValid =
+      formData.email.trim().length > 0 &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+    const phoneValid =
+      formData.phone.trim().length > 0 &&
+      /^[0-9]{10}$/.test(formData.phone.replace(/\D/g, ""));
+    const messageValid = formData.message.trim().length > 0;
+
+    return nameValid && emailValid && phoneValid && messageValid;
+  }, [formData]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -220,12 +234,17 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         </div>
       )}
 
-      <Button type="primary" size="medium" disabled={isSubmitting}>
+      <Button
+        type="primary"
+        size="medium"
+        disabled={isSubmitting || !isFormValid}
+      >
         {isSubmitting ? "Sending..." : "Send Message"}
       </Button>
     </form>
   );
 }
+
 
 
 

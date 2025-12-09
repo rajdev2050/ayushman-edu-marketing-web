@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from "lucide-react";
+import React, { useState, useMemo } from "react";
 import Button from "@/components/Button";
+import HeroSection from "@/components/HeroSection";
 
 const classes = [
   "Nursery",
@@ -66,6 +65,21 @@ export default function GetEnrolledPage() {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Real-time validation check
+  const isFormValid = useMemo(() => {
+    const nameValid = formData.name.trim().length > 0;
+    const dobValid =
+      formData.dob.trim().length > 0 &&
+      new Date(formData.dob) <= new Date();
+    const genderValid = formData.gender.length > 0;
+    const classValid = formData.class.length > 0;
+    const contactValid =
+      formData.contactNumber.trim().length > 0 &&
+      /^[0-9]{10}$/.test(formData.contactNumber.replace(/\D/g, ""));
+
+    return nameValid && dobValid && genderValid && classValid && contactValid;
+  }, [formData]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -106,29 +120,14 @@ export default function GetEnrolledPage() {
     }
   };
 
-  const router = useRouter();
-
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
-        >
-          <ArrowLeftIcon className="w-4 h-4" />
-          Back
-        </button>
-
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Get Enrolled
-          </h1>
-          <p className="text-lg text-gray-600">
-            Fill out the enrollment form below to begin your journey with
-            Ayushman Educational Academy.
-          </p>
-        </div>
+        <HeroSection
+          title="Get Enrolled"
+          description="Fill out the enrollment form below to begin your journey with Ayushman Educational Academy."
+          className="mb-10"
+        />
 
         <div className="bg-white rounded-xl shadow-md p-8">
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
@@ -334,7 +333,11 @@ export default function GetEnrolledPage() {
               </div>
             )}
 
-            <Button type="primary" size="medium" disabled={isSubmitting}>
+            <Button
+              type="primary"
+              size="medium"
+              disabled={isSubmitting || !isFormValid}
+            >
               {isSubmitting ? "Submitting..." : "Submit"}
             </Button>
           </form>

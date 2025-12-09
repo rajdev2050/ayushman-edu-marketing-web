@@ -1,148 +1,85 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { ArrowLeftIcon } from "lucide-react";
+import facilitiesData from "@/data/facilities.json";
+import HeroSection from "@/components/HeroSection";
+import FacilityCard from "@/components/FacilityCard";
 
 export default function AboutPage() {
-  const router = useRouter();
-
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section - Made Smaller */}
-      <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-8 sm:py-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-            About Us
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-blue-100">
-            Shaping young minds through excellence in education, discipline, and
-            innovation
-          </p>
-        </div>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Back Button */}
-        <button
-          onClick={() => router.back()}
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
-        >
-          <ArrowLeftIcon className="w-4 h-4" />
-          Back
-        </button>
-        {/* Welcome Section */}
-        <section className="mb-12">
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              <center>Welcome to Ayushman Educational Academy</center>
-            </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Our academy is dedicated to shaping young minds through excellence
-              in education, discipline, and innovation.
-            </p>
-          </div>
-        </section>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <HeroSection
+          title="About Us"
+          description="Shaping young minds through excellence in education, discipline, and innovation. Our academy is dedicated to shaping young minds through
+                excellence in education, discipline, and innovation."
+        />
 
         {/* Mission & Vision Section */}
-        <section className="mb-12 grid md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🎯</span>
+        <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
+            <div className="p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🎯</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">Our Mission</h2>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">Our Mission</h2>
+              <p className="text-gray-700 leading-relaxed">
+                To provide quality education that empowers students to become
+                confident, responsible, and successful individuals.
+              </p>
             </div>
-            <p className="text-gray-700 leading-relaxed">
-              To provide quality education that empowers students to become
-              confident, responsible, and successful individuals.
-            </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-2xl">👁️</span>
+          <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
+            <div className="p-5">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">👁️</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">Our Vision</h2>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">Our Vision</h2>
+              <p className="text-gray-700 leading-relaxed">
+                To be a leading educational institution that transforms lives
+                through innovative teaching methods.
+              </p>
             </div>
-            <p className="text-gray-700 leading-relaxed">
-              To be a leading educational institution that transforms lives
-              through innovative teaching methods.
-            </p>
           </div>
-        </section>
+        </div>
 
         {/* Facilities & Amenities Section */}
-        <section className="mb-12">
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              <center>Facilities & Amenities</center>
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
-                <div className="text-3xl mb-3">🏫</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Classrooms
-                </h3>
-                <p className="text-gray-600">
-                  Well-equipped, spacious classrooms with smart boards and
-                  comfortable seating arrangements
-                </p>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
-                <div className="text-3xl mb-3">💻</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Computer Lab
-                </h3>
-                <p className="text-gray-600">
-                  Modern computer facilities with internet access for digital
-                  learning
-                </p>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
-                <div className="text-3xl mb-3">🏃</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Sports Facilities
-                </h3>
-                <p className="text-gray-600">
-                  Playground and sports equipment for physical education and
-                  extracurricular activities
-                </p>
-              </div>
-
-              <div className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition">
-                <div className="text-3xl mb-3">🚌</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  Transportation
-                </h3>
-                <p className="text-gray-600">
-                  Safe and reliable school bus service covering major routes in
-                  the area
-                </p>
-              </div>
-            </div>
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Facilities & Amenities
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {facilitiesData.map((facility, index) => (
+              <FacilityCard
+                key={index}
+                title={facility.title}
+                description={facility.description}
+              />
+            ))}
           </div>
-        </section>
+        </div>
 
         {/* Contact Information Section */}
-        <section className="mb-12">
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              <center>Contact Information</center>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Contact Information
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
+              <div className="p-5">
+                <div className="flex items-start gap-3 mb-4">
                   <span className="text-2xl" aria-hidden="true">
                     📍
                   </span>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">
+                    <h3 className="font-semibold text-gray-900 mb-2">
                       Address
                     </h3>
-                    <p className="text-gray-700">
+                    <p className="text-gray-700 text-sm">
                       Ayushman Educational Academy
                       <br />
                       Semli Bari, Madhya Pradesh 455001
@@ -151,45 +88,55 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-3">
+            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
+              <div className="p-5">
+                <div className="flex items-start gap-3 mb-4">
                   <span className="text-2xl" aria-hidden="true">
                     📞
                   </span>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
                     <a
                       href="tel:+919098293521"
-                      className="text-blue-600 hover:text-blue-800 underline"
+                      className="text-blue-600 hover:text-blue-800 underline text-sm"
                     >
                       +91 90982 93521
                     </a>
                   </div>
                 </div>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-3">
+            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
+              <div className="p-5">
+                <div className="flex items-start gap-3 mb-4">
                   <span className="text-2xl" aria-hidden="true">
                     📧
                   </span>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
+                    <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
                     <a
                       href="mailto:contact@ayushmanacademy.com"
-                      className="text-blue-600 hover:text-blue-800 underline"
+                      className="text-blue-600 hover:text-blue-800 underline text-sm break-all"
                     >
                       contact@ayushmanacademy.com
                     </a>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div>
+            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105 sm:col-span-2 lg:col-span-1">
+              <div className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-3">Location</h3>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1063.8358387976411!2d76.44869480023483!3d22.97634825343415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1765016278793!5m2!1sen!2sin"
                     width="100%"
-                    height="300"
+                    height="200"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
@@ -201,42 +148,44 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         {/* Social Media Links */}
-        <section className="mb-12">
-          <div className="bg-white rounded-xl shadow-md p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              Connect With Us
-            </h2>
-            <div className="flex justify-center gap-6 flex-wrap">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition shadow-md hover:scale-105"
-                aria-label="Follow us on Facebook"
-              >
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Connect With Us
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105"
+              aria-label="Follow us on Facebook"
+            >
+              <div className="p-5 flex items-center gap-3">
                 <svg
-                  className="w-5 h-5"
+                  className="w-6 h-6 text-blue-600"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
-                <span className="font-medium">Facebook</span>
-              </a>
+                <span className="font-semibold text-gray-900">Facebook</span>
+              </div>
+            </a>
 
-              <a
-                href="https://instagram.com/ayushman_educational_"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition shadow-md hover:scale-105"
-                aria-label="Follow us on Instagram"
-              >
+            <a
+              href="https://instagram.com/ayushman_educational_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105"
+              aria-label="Follow us on Instagram"
+            >
+              <div className="p-5 flex items-center gap-3">
                 <svg
-                  className="w-5 h-5"
+                  className="w-6 h-6 text-pink-600"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -247,11 +196,11 @@ export default function AboutPage() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="font-medium">Instagram</span>
-              </a>
-            </div>
+                <span className="font-semibold text-gray-900">Instagram</span>
+              </div>
+            </a>
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );
