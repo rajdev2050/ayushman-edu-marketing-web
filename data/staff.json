@@ -1,0 +1,67 @@
+[
+  {
+    "id": "1",
+    "name": "Mr. Nilesh",
+    "role": "Founder & Director",
+    "persona": "Visionary leader and founder dedicated to providing quality education. Passionate about creating an inclusive learning environment where every student can thrive and achieve their full potential.",
+    "experience": "20+ years",
+    "image": "nilesh.png",
+    "phone": "+91 90982 93521"
+  },
+  {
+    "id": "2",
+    "name": "Mr. Udaysingh",
+    "role": "Hindi Language Teacher",
+    "persona": "Dedicated administrator focused on academic excellence and student welfare. Expert in curriculum development and teacher training. Believes in holistic education that balances academics with character building.",
+    "experience": "9+ years",
+    "image": "udaysingh.png"
+  },
+  {
+    "id": "3",
+    "name": "Mr. Bharat",
+    "role": "Science Teacher",
+    "persona": "Enthusiastic educator who makes mathematics fun and accessible. Uses real-world examples and interactive methods to help students overcome math anxiety. Known for her patience and ability to explain complex concepts simply.",
+    "experience": "7+ years",
+    "image": "bharat.png"
+  },
+  {
+    "id": "4",
+    "name": "Mrs. Nirmala",
+    "role": "Maths Teacher",
+    "persona": "Passionate scientist and educator who brings experiments to life in the classroom. Encourages curiosity and critical thinking. Believes in hands-on learning and making science relevant to everyday life.",
+    "experience": "7+ years",
+    "image": "nirmala.png"
+  },
+  {
+    "id": "5",
+    "name": "Mrs. Pooja",
+    "role": "English Teacher",
+    "persona": "Creative communicator who inspires students to love literature and express themselves confidently. Uses storytelling, drama, and creative writing to enhance language skills. Fosters a love for reading in every student.",
+    "experience": "5+ years",
+    "image": "Pooja.png"
+  },
+  {
+    "id": "6",
+    "name": "Miss. Shruti",
+    "role": "Computer Teacher",
+    "persona": "Energetic coach who promotes physical fitness and sportsmanship. Believes in the importance of physical activity for overall development. Has trained multiple state-level athletes and emphasizes teamwork and discipline.",
+    "experience": "3+ years",
+    "image": "shruti.png"
+  },
+  {
+    "id": "7",
+    "name": "Miss. Nikita",
+    "role": "Art & Craft Teacher",
+    "persona": "Creative artist who nurtures imagination and self-expression through various art forms. Encourages students to explore their artistic talents and use art as a medium for communication. Organizes annual art exhibitions showcasing student work.",
+    "experience": "3+ years",
+    "image": "Nikita.png"
+  },
+  {
+    "id": "8",
+    "name": "Mrs. Anuradha",
+    "role": "Social Studies Teacher",
+    "persona": "Tech-savvy educator who prepares students for the digital age. Teaches programming, digital literacy, and critical thinking skills. Believes in making technology accessible and fun while emphasizing responsible digital citizenship.",
+    "experience": "6+ years",
+    "image": "Anuradha.png"
+  }
+]

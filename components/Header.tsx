@@ -27,6 +27,10 @@ const menuItems: MenuItem[] = [
     href: "/event",
   },
   {
+    label: "Staff",
+    href: "/staff",
+  },
+  {
     label: "Contact",
     href: "/contact",
   },
