@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import HeroSection from "@/components/HeroSection";
+import GalleryImageCard from "@/components/GalleryImageCard";
 
 const galleryImages = [
   { id: 1, src: "/events/sample.png", alt: "School event" },
@@ -24,18 +24,7 @@ export default function GalleryPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {galleryImages.map((image) => (
-            <div
-              key={image.id}
-              className="relative aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              />
-            </div>
+            <GalleryImageCard key={image.id} image={image} />
           ))}
         </div>
       </div>

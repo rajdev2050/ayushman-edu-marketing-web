@@ -3,6 +3,10 @@
 import React, { useState, useMemo } from "react";
 import Button from "@/components/Button";
 import HeroSection from "@/components/HeroSection";
+import Input from "@/components/Input";
+import Select from "@/components/Select";
+import RadioGroup from "@/components/RadioGroup";
+import StatusMessage from "@/components/StatusMessage";
 
 const classes = [
   "Nursery",
@@ -69,8 +73,7 @@ export default function GetEnrolledPage() {
   const isFormValid = useMemo(() => {
     const nameValid = formData.name.trim().length > 0;
     const dobValid =
-      formData.dob.trim().length > 0 &&
-      new Date(formData.dob) <= new Date();
+      formData.dob.trim().length > 0 && new Date(formData.dob) <= new Date();
     const genderValid = formData.gender.length > 0;
     const classValid = formData.class.length > 0;
     const contactValid =
@@ -132,205 +135,90 @@ export default function GetEnrolledPage() {
         <div className="bg-white rounded-xl shadow-md p-8">
           <form onSubmit={handleSubmit} className="space-y-6" noValidate>
             {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.name ? "border-red-500" : "border-gray-300"
-                }`}
-                aria-invalid={!!errors.name}
-                aria-describedby={errors.name ? "name-error" : undefined}
-              />
-              {errors.name && (
-                <p
-                  id="name-error"
-                  className="mt-1 text-sm text-red-600"
-                  role="alert"
-                >
-                  {errors.name}
-                </p>
-              )}
-            </div>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              label="Name"
+              value={formData.name}
+              onChange={handleChange}
+              error={errors.name}
+              required
+            />
 
             {/* Date of Birth */}
-            <div>
-              <label
-                htmlFor="dob"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Date of Birth <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="dob"
-                name="dob"
-                type="date"
-                value={formData.dob}
-                onChange={handleChange}
-                className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.dob ? "border-red-500" : "border-gray-300"
-                }`}
-                aria-invalid={!!errors.dob}
-                aria-describedby={errors.dob ? "dob-error" : undefined}
-              />
-              {errors.dob && (
-                <p
-                  id="dob-error"
-                  className="mt-1 text-sm text-red-600"
-                  role="alert"
-                >
-                  {errors.dob}
-                </p>
-              )}
-            </div>
+            <Input
+              id="dob"
+              name="dob"
+              type="date"
+              label="Date of Birth"
+              value={formData.dob}
+              onChange={handleChange}
+              error={errors.dob}
+              required
+            />
 
             {/* Gender */}
-            <div>
-              <label
-                htmlFor="gender"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Gender <span className="text-red-500">*</span>
-              </label>
-              <div className="flex gap-6">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Male"
-                    checked={formData.gender === "Male"}
-                    onChange={handleChange}
-                    className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="text-gray-700">Male</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Female"
-                    checked={formData.gender === "Female"}
-                    onChange={handleChange}
-                    className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="text-gray-700">Female</span>
-                </label>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="gender"
-                    value="Other"
-                    checked={formData.gender === "Other"}
-                    onChange={handleChange}
-                    className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span className="text-gray-700">Other</span>
-                </label>
-              </div>
-              {errors.gender && (
-                <p className="mt-1 text-sm text-red-600" role="alert">
-                  {errors.gender}
-                </p>
-              )}
-            </div>
+            <RadioGroup
+              name="gender"
+              label="Gender"
+              options={[
+                { label: "Male", value: "Male" },
+                { label: "Female", value: "Female" },
+                { label: "Other", value: "Other" },
+              ]}
+              value={formData.gender}
+              onChange={
+                handleChange as (e: React.ChangeEvent<HTMLInputElement>) => void
+              }
+              error={errors.gender}
+            />
 
             {/* Class */}
-            <div>
-              <label
-                htmlFor="class"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Class <span className="text-red-500">*</span>
-              </label>
-              <select
-                id="class"
-                name="class"
-                value={formData.class}
-                onChange={handleChange}
-                className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.class ? "border-red-500" : "border-gray-300"
-                }`}
-                aria-invalid={!!errors.class}
-                aria-describedby={errors.class ? "class-error" : undefined}
-              >
-                <option value="">Select a class</option>
-                {classes.map((className) => (
-                  <option key={className} value={className}>
-                    {className}
-                  </option>
-                ))}
-              </select>
-              {errors.class && (
-                <p
-                  id="class-error"
-                  className="mt-1 text-sm text-red-600"
-                  role="alert"
-                >
-                  {errors.class}
-                </p>
-              )}
-            </div>
+            <Select
+              id="class"
+              name="class"
+              label="Class"
+              value={formData.class}
+              onChange={
+                handleChange as (
+                  e: React.ChangeEvent<HTMLSelectElement>
+                ) => void
+              }
+              options={classes.map((className) => ({
+                label: className,
+                value: className,
+              }))}
+              error={errors.class}
+              placeholder="Select a class"
+              required
+            />
 
             {/* Contact Number */}
-            <div>
-              <label
-                htmlFor="contactNumber"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Contact Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                id="contactNumber"
-                name="contactNumber"
-                type="tel"
-                value={formData.contactNumber}
-                onChange={handleChange}
-                placeholder="10-digit phone number"
-                className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  errors.contactNumber ? "border-red-500" : "border-gray-300"
-                }`}
-                aria-invalid={!!errors.contactNumber}
-                aria-describedby={
-                  errors.contactNumber ? "contactNumber-error" : undefined
-                }
-              />
-              {errors.contactNumber && (
-                <p
-                  id="contactNumber-error"
-                  className="mt-1 text-sm text-red-600"
-                  role="alert"
-                >
-                  {errors.contactNumber}
-                </p>
-              )}
-            </div>
+            <Input
+              id="contactNumber"
+              name="contactNumber"
+              type="tel"
+              label="Contact Number"
+              placeholder="10-digit phone number"
+              value={formData.contactNumber}
+              onChange={handleChange}
+              error={errors.contactNumber}
+              required
+            />
 
             {/* Status */}
             {status === "success" && (
-              <div
-                className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm"
-                role="alert"
-              >
-                Thank you! Your enrollment form has been submitted successfully.
-                We&apos;ll contact you soon.
-              </div>
+              <StatusMessage
+                type="success"
+                message="Thank you! Your enrollment form has been submitted successfully. We'll contact you soon."
+              />
             )}
             {status === "error" && (
-              <div
-                className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm"
-                role="alert"
-              >
-                Something went wrong. Please try again later.
-              </div>
+              <StatusMessage
+                type="error"
+                message="Something went wrong. Please try again later."
+              />
             )}
 
             <Button

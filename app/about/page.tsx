@@ -3,6 +3,10 @@
 import facilitiesData from "@/data/facilities.json";
 import HeroSection from "@/components/HeroSection";
 import FacilityCard from "@/components/FacilityCard";
+import InfoCard from "@/components/InfoCard";
+import SectionHeader from "@/components/SectionHeader";
+import LocationCard from "@/components/LocationCard";
+import SocialLink from "@/components/SocialLink";
 
 export default function AboutPage() {
   return (
@@ -16,42 +20,21 @@ export default function AboutPage() {
 
         {/* Mission & Vision Section */}
         <div className="mb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
-            <div className="p-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🎯</span>
-                </div>
-                <h2 className="text-xl font-bold text-gray-900">Our Mission</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                To provide quality education that empowers students to become
-                confident, responsible, and successful individuals.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
-            <div className="p-5">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">👁️</span>
-                </div>
-                <h2 className="text-xl font-bold text-gray-900">Our Vision</h2>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
-                To be a leading educational institution that transforms lives
-                through innovative teaching methods.
-              </p>
-            </div>
-          </div>
+          <InfoCard
+            icon="🎯"
+            title="Our Mission"
+            description="To provide quality education that empowers students to become confident, responsible, and successful individuals."
+          />
+          <InfoCard
+            icon="👁️"
+            title="Our Vision"
+            description="To be a leading educational institution that transforms lives through innovative teaching methods."
+          />
         </div>
 
         {/* Facilities & Amenities Section */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            Facilities & Amenities
-          </h2>
+          <SectionHeader title="Facilities & Amenities" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {facilitiesData.map((facility, index) => (
               <FacilityCard
@@ -65,105 +48,62 @@ export default function AboutPage() {
 
         {/* Contact Information Section */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            Contact Information
-          </h2>
+          <SectionHeader title="Contact Information" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
-              <div className="p-5">
-                <div className="flex items-start gap-3 mb-4">
-                  <span className="text-2xl" aria-hidden="true">
-                    📍
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      Address
-                    </h3>
-                    <p className="text-gray-700 text-sm">
-                      Ayushman Educational Academy
-                      <br />
-                      Semli Bari, Madhya Pradesh 455001
-                      <br />
-                      India
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
-              <div className="p-5">
-                <div className="flex items-start gap-3 mb-4">
-                  <span className="text-2xl" aria-hidden="true">
-                    📞
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-                    <a
-                      href="tel:+919098293521"
-                      className="text-blue-600 hover:text-blue-800 underline text-sm"
-                    >
-                      +91 90982 93521
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105">
-              <div className="p-5">
-                <div className="flex items-start gap-3 mb-4">
-                  <span className="text-2xl" aria-hidden="true">
-                    📧
-                  </span>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-                    <a
-                      href="mailto:contact@ayushmanacademy.com"
-                      className="text-blue-600 hover:text-blue-800 underline text-sm break-all"
-                    >
-                      contact@ayushmanacademy.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105 sm:col-span-2 lg:col-span-1">
-              <div className="p-5">
-                <h3 className="font-semibold text-gray-900 mb-3">Location</h3>
-                <div className="rounded-lg overflow-hidden">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1063.8358387976411!2d76.44869480023483!3d22.97634825343415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1765016278793!5m2!1sen!2sin"
-                    width="100%"
-                    height="200"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Ayushman Educational Academy Location"
-                    className="w-full"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
+            <InfoCard
+              icon="📍"
+              title="Address"
+              description={
+                <>
+                  Ayushman Educational Academy
+                  <br />
+                  Semli Bari, Madhya Pradesh 455001
+                  <br />
+                  India
+                </>
+              }
+            />
+            <InfoCard
+              icon="📞"
+              title="Phone"
+              description={
+                <a
+                  href="tel:+919098293521"
+                  className="text-blue-600 hover:text-blue-800 underline"
+                >
+                  +91 90982 93521
+                </a>
+              }
+            />
+            <InfoCard
+              icon="📧"
+              title="Email"
+              description={
+                <a
+                  href="mailto:contact@ayushmanacademy.com"
+                  className="text-blue-600 hover:text-blue-800 underline break-all"
+                >
+                  contact@ayushmanacademy.com
+                </a>
+              }
+            />
+            <LocationCard
+              title="Location"
+              mapSrc="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1063.8358387976411!2d76.44869480023483!3d22.97634825343415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1765016278793!5m2!1sen!2sin"
+              height={200}
+              className="sm:col-span-2 lg:col-span-1"
+            />
           </div>
         </div>
 
         {/* Social Media Links */}
         <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            Connect With Us
-          </h2>
+          <SectionHeader title="Connect With Us" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105"
-              aria-label="Follow us on Facebook"
-            >
-              <div className="p-5 flex items-center gap-3">
+            <SocialLink
+              platform="Facebook"
+              url="https://facebook.com"
+              icon={
                 <svg
                   className="w-6 h-6 text-blue-600"
                   fill="currentColor"
@@ -172,18 +112,13 @@ export default function AboutPage() {
                 >
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
-                <span className="font-semibold text-gray-900">Facebook</span>
-              </div>
-            </a>
-
-            <a
-              href="https://instagram.com/ayushman_educational_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-2 border-transparent hover:border-blue-500 hover:scale-105"
-              aria-label="Follow us on Instagram"
-            >
-              <div className="p-5 flex items-center gap-3">
+              }
+              ariaLabel="Follow us on Facebook"
+            />
+            <SocialLink
+              platform="Instagram"
+              url="https://instagram.com/ayushman_educational_"
+              icon={
                 <svg
                   className="w-6 h-6 text-pink-600"
                   fill="currentColor"
@@ -196,9 +131,9 @@ export default function AboutPage() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="font-semibold text-gray-900">Instagram</span>
-              </div>
-            </a>
+              }
+              ariaLabel="Follow us on Instagram"
+            />
           </div>
         </div>
       </div>

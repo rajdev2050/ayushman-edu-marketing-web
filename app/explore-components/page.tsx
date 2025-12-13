@@ -136,8 +136,7 @@ export default function HomePage() {
             type="text"
             placeholder="Enter your full name"
             value={name}
-            onChange={(value) => setName(value)}
-            size="medium"
+            onChange={(e) => setName(e.target.value)}
           />
         </section>
 

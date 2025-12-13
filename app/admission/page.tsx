@@ -2,6 +2,11 @@
 
 import { useState, useMemo } from "react";
 import Button from "@/components/Button";
+import Input from "@/components/Input";
+import HeroSection from "@/components/HeroSection";
+import FormSection from "@/components/FormSection";
+import InfoList from "@/components/InfoList";
+import FeesTable from "@/components/FeesTable";
 
 export default function AdmissionPage() {
   const [formData, setFormData] = useState({
@@ -76,158 +81,128 @@ export default function AdmissionPage() {
     }
   };
 
+  const feesData = [
+    { class: "Nursery - KG2", admissionFee: "₹ 3,000", monthlyFee: "₹ 1,000" },
+    { class: "Class 1 - 5", admissionFee: "₹ 4,000", monthlyFee: "₹ 1,200" },
+    { class: "Class 6 - 8", admissionFee: "₹ 5,000", monthlyFee: "₹ 1,400" },
+    { class: "Class 9 - 12", admissionFee: "₹ 6,000", monthlyFee: "₹ 1,800" },
+  ];
+
+  const admissionProcessItems = [
+    { text: "Fill the online admission form.", icon: "1️⃣" },
+    { text: "Submit all required documents.", icon: "2️⃣" },
+    { text: "School will schedule an interaction/interview.", icon: "3️⃣" },
+    { text: "Selected students will receive confirmation.", icon: "4️⃣" },
+    { text: "Pay the admission & first month fees.", icon: "5️⃣" },
+  ];
+
+  const requiredDocumentsItems = [
+    { text: "Birth Certificate" },
+    { text: "Aadhar Card of Student" },
+    { text: "Transfer Certificate (if applicable)" },
+    { text: "Marksheet of last class" },
+    { text: "Passport size photos – Student & Parents" },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 🔹 Header Section */}
-      <div className="bg-blue-600 text-white py-14 text-center">
-        <h1 className="text-4xl font-bold">Admission 2025</h1>
-        <p className="text-lg mt-2">
-          Join our school for quality education & bright future.
-        </p>
-      </div>
+      <HeroSection
+        title="Admission 2025"
+        description="Join our school for quality education & bright future."
+        showBackButton={false}
+        className="bg-blue-600 text-white py-14"
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* 🔹 Admission Process */}
-        <section className="bg-white shadow-md p-6 rounded-xl mb-10">
-          <h2 className="text-2xl font-semibold mb-4">Admission Process</h2>
-
-          <ul className="space-y-3 text-gray-700">
-            <li>1️⃣ Fill the online admission form.</li>
-            <li>2️⃣ Submit all required documents.</li>
-            <li>3️⃣ School will schedule an interaction/interview.</li>
-            <li>4️⃣ Selected students will receive confirmation.</li>
-            <li>5️⃣ Pay the admission & first month fees.</li>
-          </ul>
-        </section>
+        <FormSection title="Admission Process">
+          <InfoList items={admissionProcessItems} />
+        </FormSection>
 
         {/* 🔹 Required Documents */}
-        <section className="bg-white shadow-md p-6 rounded-xl mb-10">
-          <h2 className="text-2xl font-semibold mb-4">Required Documents</h2>
-
-          <ul className="space-y-3 text-gray-700">
-            <li>📌 Birth Certificate</li>
-            <li>📌 Aadhar Card of Student</li>
-            <li>📌 Transfer Certificate (if applicable)</li>
-            <li>📌 Marksheet of last class</li>
-            <li>📌 Passport size photos – Student & Parents</li>
-          </ul>
-        </section>
+        <FormSection title="Required Documents">
+          <InfoList items={requiredDocumentsItems} />
+        </FormSection>
 
         {/* 🔹 Fees Details */}
-        <section className="bg-white shadow-md p-6 rounded-xl mb-10">
-          <h2 className="text-2xl font-semibold mb-4">Fees Structure</h2>
-
+        <FormSection title="Fees Structure">
           <p className="text-gray-700 mb-4">
             Admission fee + Monthly tuition fee varies according to class.
           </p>
-
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="border p-2">Class</th>
-                <th className="border p-2">Admission Fee</th>
-                <th className="border p-2">Monthly Fee</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td className="border p-2">Nursery - KG2</td>
-                <td className="border p-2">₹ 3,000</td>
-                <td className="border p-2">₹ 1,000</td>
-              </tr>
-              <tr>
-                <td className="border p-2">Class 1 - 5</td>
-                <td className="border p-2">₹ 4,000</td>
-                <td className="border p-2">₹ 1,200</td>
-              </tr>
-              <tr>
-                <td className="border p-2">Class 6 - 8</td>
-                <td className="border p-2">₹ 5,000</td>
-                <td className="border p-2">₹ 1,400</td>
-              </tr>
-              <tr>
-                <td className="border p-2">Class 9 - 12</td>
-                <td className="border p-2">₹ 6,000</td>
-                <td className="border p-2">₹ 1,800</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+          <FeesTable data={feesData} />
+        </FormSection>
 
         {/* 🔹 Online Admission Form */}
-        <section className="bg-white shadow-md p-6 rounded-xl mb-10">
-          <h2 className="text-2xl font-semibold mb-4">Online Admission Form</h2>
-
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
+        <FormSection title="Online Admission Form">
+          <form
+            onSubmit={handleSubmit}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          >
+            <Input
               type="text"
               name="studentName"
+              label="Student Name"
               value={formData.studentName}
               onChange={handleChange}
-              placeholder="Student Name"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <input
+            <Input
               type="number"
               name="age"
+              label="Age"
               value={formData.age}
               onChange={handleChange}
-              placeholder="Age"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <input
+            <Input
               type="text"
               name="classApplying"
+              label="Class Applying For"
               value={formData.classApplying}
               onChange={handleChange}
-              placeholder="Class Applying For"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <input
+            <Input
               type="text"
               name="fathersName"
+              label="Father's Name"
               value={formData.fathersName}
               onChange={handleChange}
-              placeholder="Father's Name"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <input
+            <Input
               type="text"
               name="mothersName"
+              label="Mother's Name"
               value={formData.mothersName}
               onChange={handleChange}
-              placeholder="Mother's Name"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <input
+            <Input
               type="tel"
               name="mobileNumber"
+              label="Mobile Number"
               value={formData.mobileNumber}
               onChange={handleChange}
-              placeholder="Mobile Number"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500"
               required
             />
 
-            <textarea
+            <Input
               name="address"
+              label="Address"
               value={formData.address}
               onChange={handleChange}
-              placeholder="Address"
-              className="border p-3 rounded-lg focus:ring-2 focus:ring-blue-500 md:col-span-2"
+              multiline
+              rows={5}
+              className="md:col-span-2"
               required
-            ></textarea>
+            />
 
             <Button
               type="primary"
@@ -238,7 +213,7 @@ export default function AdmissionPage() {
               {isSubmitting ? "Submitting..." : "Submit Application"}
             </Button>
           </form>
-        </section>
+        </FormSection>
       </div>
     </div>
   );

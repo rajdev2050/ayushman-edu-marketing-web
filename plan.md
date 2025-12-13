@@ -46,4 +46,10 @@ Create a page with route /staff
 
 Highlight all staff with their persona,
 
+# Input Component
+
+- Add label - show on top of input
+- Show error in bottom in red color
+- Also support multiline (textarea)
+
 # Use Input component on all pages

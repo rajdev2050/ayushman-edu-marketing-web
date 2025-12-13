@@ -2,6 +2,7 @@
 
 import ContactForm from "@/components/ContactForm";
 import HeroSection from "@/components/HeroSection";
+import ContactInfoItem from "@/components/ContactInfoItem";
 
 export default function ContactPage() {
   return (
@@ -21,31 +22,27 @@ export default function ContactPage() {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">
             Other Ways to Reach Us
           </h2>
-          <div className="space-y-3 text-gray-700 text-sm">
-            <p className="flex items-center gap-2">
-              <span aria-hidden="true">📞</span>
-              <a
-                href="tel:+919098293521"
-                className="hover:text-blue-600 underline"
-                aria-label="Call us at +91 90982 93521"
-              >
-                +91 90982 93521
-              </a>
-            </p>
-            <p className="flex items-center gap-2">
-              <span aria-hidden="true">📧</span>
-              <a
-                href="mailto:contact@ayushmanacademy.com"
-                className="hover:text-blue-600 underline"
-                aria-label="Email us at contact@ayushmanacademy.com"
-              >
-                contact@ayushmanacademy.com
-              </a>
-            </p>
-            <p className="flex items-center gap-2">
-              <span aria-hidden="true">📍</span>
-              <span>Semli Bari, Madhya Pradesh</span>
-            </p>
+          <div className="space-y-3">
+            <ContactInfoItem
+              icon="📞"
+              label="Phone"
+              value="+91 90982 93521"
+              href="tel:+919098293521"
+              type="phone"
+            />
+            <ContactInfoItem
+              icon="📧"
+              label="Email"
+              value="contact@ayushmanacademy.com"
+              href="mailto:contact@ayushmanacademy.com"
+              type="email"
+            />
+            <ContactInfoItem
+              icon="📍"
+              label="Address"
+              value="Semli Bari, Madhya Pradesh"
+              type="address"
+            />
           </div>
         </div>
       </div>

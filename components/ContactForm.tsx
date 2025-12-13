@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Button from "./Button";
+import Input from "./Input";
 
 type ContactFormProps = {
   onSubmit?: (data: {
@@ -96,124 +97,53 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       {/* Name */}
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Name <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          value={formData.name}
-          onChange={handleChange}
-          className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.name ? "border-red-500" : "border-gray-300"
-          }`}
-          aria-invalid={!!errors.name}
-          aria-describedby={errors.name ? "name-error" : undefined}
-        />
-        {errors.name && (
-          <p id="name-error" className="mt-1 text-sm text-red-600" role="alert">
-            {errors.name}
-          </p>
-        )}
-      </div>
+      <Input
+        id="name"
+        name="name"
+        type="text"
+        label="Name"
+        value={formData.name}
+        onChange={handleChange}
+        error={errors.name}
+        required
+      />
 
       {/* Email */}
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Email <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.email ? "border-red-500" : "border-gray-300"
-          }`}
-          aria-invalid={!!errors.email}
-          aria-describedby={errors.email ? "email-error" : undefined}
-        />
-        {errors.email && (
-          <p
-            id="email-error"
-            className="mt-1 text-sm text-red-600"
-            role="alert"
-          >
-            {errors.email}
-          </p>
-        )}
-      </div>
+      <Input
+        id="email"
+        name="email"
+        type="email"
+        label="Email"
+        value={formData.email}
+        onChange={handleChange}
+        error={errors.email}
+        required
+      />
 
       {/* Phone */}
-      <div>
-        <label
-          htmlFor="phone"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Phone <span className="text-red-500">*</span>
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.phone ? "border-red-500" : "border-gray-300"
-          }`}
-          aria-invalid={!!errors.phone}
-          aria-describedby={errors.phone ? "phone-error" : undefined}
-        />
-        {errors.phone && (
-          <p
-            id="phone-error"
-            className="mt-1 text-sm text-red-600"
-            role="alert"
-          >
-            {errors.phone}
-          </p>
-        )}
-      </div>
+      <Input
+        id="phone"
+        name="phone"
+        type="tel"
+        label="Phone"
+        value={formData.phone}
+        onChange={handleChange}
+        error={errors.phone}
+        required
+      />
 
       {/* Message */}
-      <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-gray-700 mb-1"
-        >
-          Message <span className="text-red-500">*</span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={5}
-          value={formData.message}
-          onChange={handleChange}
-          className={`w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-            errors.message ? "border-red-500" : "border-gray-300"
-          }`}
-          aria-invalid={!!errors.message}
-          aria-describedby={errors.message ? "message-error" : undefined}
-        />
-        {errors.message && (
-          <p
-            id="message-error"
-            className="mt-1 text-sm text-red-600"
-            role="alert"
-          >
-            {errors.message}
-          </p>
-        )}
-      </div>
+      <Input
+        id="message"
+        name="message"
+        label="Message"
+        value={formData.message}
+        onChange={handleChange}
+        error={errors.message}
+        multiline
+        rows={5}
+        required
+      />
 
       {/* Status */}
       {status === "success" && (

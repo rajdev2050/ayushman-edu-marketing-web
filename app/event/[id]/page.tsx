@@ -1,8 +1,7 @@
 "use client";
-import Image from "next/image";
 import { useParams } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeftIcon } from "lucide-react";
+import BackButton from "@/components/BackButton";
+import EventDetailCard from "@/components/EventDetailCard";
 
 const eventData: Record<
   number,
@@ -120,13 +119,7 @@ export default function EventDetailPage() {
             <p className="text-gray-600 mb-6">
               The event you're looking for doesn't exist.
             </p>
-            <Link
-              href="/event"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold"
-            >
-              <ArrowLeftIcon className="w-4 h-4" />
-              Back to Events
-            </Link>
+            <BackButton href="/event" label="Back to Events" />
           </div>
         </div>
       </div>
@@ -137,55 +130,10 @@ export default function EventDetailPage() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Back Button */}
-        <Link
-          href="/event"
-          className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium mb-8 transition"
-        >
-          <ArrowLeftIcon className="w-4 h-4" />
-          Back to Events
-        </Link>
+        <BackButton href="/event" label="Back to Events" />
 
         {/* Event Content */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          {/* Event Image */}
-          <div className="relative h-64 md:h-96 overflow-hidden">
-            <Image
-              src={event.img}
-              width={1200}
-              height={600}
-              alt={event.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          {/* Event Details */}
-          <div className="p-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              {event.title}
-            </h1>
-
-            {/* Event Meta Information */}
-            <div className="flex flex-wrap gap-6 mb-6 pb-6 border-b border-gray-200">
-              <div className="flex items-center gap-2 text-gray-600">
-                <span className="text-xl">📅</span>
-                <span className="font-medium">{event.date}</span>
-              </div>
-              {event.location && (
-                <div className="flex items-center gap-2 text-gray-600">
-                  <span className="text-xl">📍</span>
-                  <span className="font-medium">{event.location}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Event Description */}
-            <div className="prose max-w-none">
-              <p className="text-lg text-gray-700 leading-relaxed">
-                {event.description}
-              </p>
-            </div>
-          </div>
-        </div>
+        <EventDetailCard event={event} />
       </div>
     </div>
   );
